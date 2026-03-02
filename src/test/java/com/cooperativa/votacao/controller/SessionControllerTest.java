@@ -69,7 +69,7 @@ public class SessionControllerTest {
 
         VotingSession sessaoMock = VotingSession.builder()
                 .id(UUID.randomUUID())
-                .endTime(LocalDateTime.now().plusMinutes(1)) // 1 min default
+                .endTime(LocalDateTime.now().plusMinutes(1))
                 .build();
 
         when(service.open(eq(agendaId), isNull())).thenReturn(sessaoMock);
