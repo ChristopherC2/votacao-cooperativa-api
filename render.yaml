@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: votacao-api
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: votacao-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: votacao-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: votacao-db
+          property: password
+
+databases:
+  - name: votacao-db
+    plan: free
